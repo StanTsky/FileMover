@@ -6,7 +6,8 @@
 * File:       main.cpp
 * Purpose:    C++ File Move implementation using system calls in Linux
 *             - Accepts 2 arguments when executed (source and 
-*               destrination file names)       
+*               destrination file names) 
+*             - Usage: ./main test1.txt test2.txt      
 --------------------------------------------------------------------
 */
 
@@ -20,6 +21,12 @@ int main(int argc, char * args[])
 	int infile, outfile;    //file from, file to
 	int numberOfBytesRead;
 	char buffer[20];
+
+  if( argc < 2 ) {
+    puts ("Usage: ./main test1.txt test2.txt");
+    puts ("First file name is the source and second is the destination.");
+    return 0;
+  }
 
 	infile = open(args[1], O_RDONLY, 0700);
 
